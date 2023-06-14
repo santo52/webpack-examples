@@ -3,18 +3,18 @@ const { readdirSync } = require('fs');
 const nodeExternals = require('webpack-node-externals');
 
 
-const entries = {
-    'packages/button/lib/index.production': './packages/button/index.js',
-    'packages/footer/lib/index.production': './packages/footer/index.js',
-    'packages/image/lib/index.production': './packages/image/index.js'
-}
+// const entries = {
+//     'packages/button/lib/index.production': './packages/button/index.js',
+//     'packages/footer/lib/index.production': './packages/footer/index.js',
+//     'packages/image/lib/index.production': './packages/image/index.js'
+// }
 
-// const entries = readdirSync('./packages').reduce((initial, moduleName) => {
-//     const modulePath = `./packages/${moduleName}`;
-//     const entryPath = `${modulePath}/index.js`;
-//     const entryName = `packages/${moduleName}/lib/index.production`;
-//     return {...initial, [entryName]: entryPath }
-// }, {});
+const entries = readdirSync('./packages').reduce((initial, moduleName) => {
+    const modulePath = `./packages/${moduleName}`;
+    const entryPath = `${modulePath}/index.js`;
+    const entryName = `packages/${moduleName}/lib/index.production`;
+    return {...initial, [entryName]: entryPath }
+}, {});
 
 module.exports = {
   mode: 'development',
